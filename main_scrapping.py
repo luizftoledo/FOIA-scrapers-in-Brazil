@@ -15,7 +15,11 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Input parameters")
     parser.add_argument("--keyword", "-k", type=str, help="keyword to be searched")
     parser.add_argument(
-        "--number_days", "-n", type=int, help="number of days to look back for requests"
+        "--number_days",
+        "-n",
+        type=int,
+        default=30,
+        help="number of days to look back for requests",
     )
     parser.add_argument("--export_path", "-o", type=str, help="output path")
 

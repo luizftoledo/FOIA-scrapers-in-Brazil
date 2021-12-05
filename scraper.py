@@ -1,4 +1,3 @@
-import re
 import pandas as pd
 import time
 from typing import List, Dict
@@ -40,13 +39,9 @@ class Scraper:
         today = date.today()
         days = datetime.timedelta(number_days)
         start_date = today - days
-        start_date = str(start_date)
-        year_regex = r"(\d\d\d\d)-"
-        year_only = re.findall(year_regex, start_date)[0]
-        month_regex = r".....(..)"
-        month_only = re.findall(month_regex, start_date)[0]
-        day_regex = r"........(..)"
-        day_only = re.findall(day_regex, start_date)[0]
+        year_only = start_date.year
+        month_only = start_date.month
+        day_only = start_date.day
 
         main_url = "http://www.consultaesic.cgu.gov.br/busca/SitePages/resultadopesquisa.aspx?k=ALL"
         aux_url = "%20DataPedido%3E%3D"
