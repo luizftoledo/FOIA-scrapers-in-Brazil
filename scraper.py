@@ -9,6 +9,8 @@ from datetime import date
 import datetime
 from logger import logger
 
+NUMBER_PAGES = 100
+
 
 class Scraper:
     """
@@ -67,15 +69,11 @@ class Scraper:
         """
         final_link = self._prepare_link(number_days, keyword)
         self.driver.get(final_link)
+        time.sleep(2)
 
-    def search_requests(self, number_pages: int) -> List[str]:
+    def search_requests(self) -> List[str]:
         """search for requests
-
-        Parameters
-        ----------
-        number_pages : int
-            number of days to look back in time
-
+        
         Returns
         -------
         List[str]
@@ -83,7 +81,7 @@ class Scraper:
         """
         list_of_links = []
         # try to open up to number_pages pages in order to find those links
-        for _ in range(number_pages):
+        for _ in range(NUMBER_PAGES):
             for pedido in self.driver.find_elements(By.CLASS_NAME, "ms-srch-ellipsis"):
                 links = pedido.find_elements(By.TAG_NAME, "a")
                 for link in links:

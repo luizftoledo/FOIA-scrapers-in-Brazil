@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 def main(args):
     web_scraper = Scraper()
     web_scraper.load_initial_page(args.number_days, args.keyword)
-    list_of_links = web_scraper.search_requests(args.number_pages)
+    list_of_links = web_scraper.search_requests()
     requests_list = web_scraper.store_requests(list_of_links)
     web_scraper.export_dataframe(requests_list, args.export_path)
 
@@ -17,7 +17,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--number_days", "-n", type=int, help="number of days to look back for requests"
     )
-    parser.add_argument("--number_pages", "-p", type=int, help="number of pages")
     parser.add_argument("--export_path", "-o", type=str, help="output path")
 
     args = parser.parse_args()
