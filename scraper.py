@@ -22,7 +22,7 @@ class Scraper:
         logger.info("Initialized webdriver")
 
     def _prepare_link(self, number_days: int, keyword: str) -> str:
-        """prepare link to download the requests
+        """prepare link to search for requests
 
         Parameters
         ----------
